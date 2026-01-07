@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using UnifyMESWpf.ViewModels;
+
 namespace UnifyMESWpf.Views
 {
     /// <summary>
@@ -16,9 +18,10 @@ namespace UnifyMESWpf.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }
