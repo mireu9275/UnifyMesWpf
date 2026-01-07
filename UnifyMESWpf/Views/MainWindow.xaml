@@ -20,7 +20,7 @@
         <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
             <local:LoginView />
         </DataTemplate>
-        <!-- 추후 DashboardViewModel 추가 예정 -->
+        <!-- DashboardViewModel Template will be added here -->
     </Window.Resources>
     
     <Grid>

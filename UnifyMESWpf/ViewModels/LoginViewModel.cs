@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
 
@@ -25,8 +25,8 @@ namespace UnifyMESWpf.ViewModels
             if (IsBusy) return;
 
             IsBusy = true;
-            // TODO: 실제 로그인 로직 구현
-            await Task.Delay(2000); // 로그인 시뮬레이션
+            // TODO: ?ㅼ젣 濡쒓렇??濡쒖쭅 援ы쁽
+            await Task.Delay(2000); // 濡쒓렇???쒕??덉씠??
             IsBusy = false;
         }
     }
