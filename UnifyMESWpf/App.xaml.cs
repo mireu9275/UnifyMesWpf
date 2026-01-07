@@ -24,6 +24,7 @@ namespace UnifyMESWpf
 
             // ViewModels
             services.AddTransient<MainViewModel>();
+            services.AddTransient<LoginViewModel>();
 
             // Views
             services.AddTransient<MainWindow>();

@@ -1,0 +1,76 @@
+<UserControl x:Class="UnifyMESWpf.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:UnifyMESWpf.Views"
+             xmlns:viewmodels="clr-namespace:UnifyMESWpf.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance Type=viewmodels:LoginViewModel}">
+    <Grid>
+        <!-- 배경 -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#E8F5E9" Offset="0.0"/>
+                <GradientStop Color="#C8E6C9" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <materialDesign:Card Width="350" Padding="30" UniformCornerRadius="10" 
+                             materialDesign:ElevationAssist.Elevation="Dp8"
+                             VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <materialDesign:PackIcon Kind="Factory" Width="50" Height="50" HorizontalAlignment="Center" Foreground="{StaticResource PrimaryHueMidBrush}"/>
+                
+                <TextBlock Text="Unify MES" 
+                           Style="{StaticResource MaterialDesignHeadline4TextBlock}" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,10,0,30"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource PrimaryHueMidBrush}"/>
+
+                <!-- 아이디 입력 -->
+                <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         materialDesign:HintAssist.Hint="아이디"
+                         materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                         materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryHueMidBrush}"
+                         Margin="0,0,0,20"
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="16">
+                    <materialDesign:HintAssist.HintOpacity>0.5</materialDesign:HintAssist.HintOpacity>
+                </TextBox>
+
+                <!-- 비밀번호 입력 -->
+                <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                             materialDesign:HintAssist.Hint="비밀번호"
+                             materialDesign:HintAssist.Foreground="{StaticResource PrimaryHueMidBrush}"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource PrimaryHueMidBrush}"
+                             Margin="0,0,0,40"
+                             FontSize="16"
+                             materialDesign:PasswordBoxAssist.Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- 로그인 버튼 -->
+                <Button Command="{Binding LoginCommand}"
+                        Content="로그인"
+                        Height="50"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="{StaticResource PrimaryHueMidBrush}"
+                        BorderBrush="{StaticResource PrimaryHueMidBrush}"
+                        FontSize="18"
+                        FontWeight="Bold">
+                    <Button.Effect>
+                        <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" BlurRadius="5" Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
+
+                <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                             Value="0"
+                             IsIndeterminate="True"
+                             Margin="0,20,0,0"
+                             Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

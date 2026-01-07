@@ -5,10 +5,14 @@ namespace UnifyMESWpf.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string title = "Unify MES - 초기 화면";
+        private string title = "Unify MES";
 
-        public MainViewModel()
+        [ObservableProperty]
+        private ObservableObject currentViewModel;
+
+        public MainViewModel(LoginViewModel loginViewModel)
         {
+            CurrentViewModel = loginViewModel;
         }
     }
 }

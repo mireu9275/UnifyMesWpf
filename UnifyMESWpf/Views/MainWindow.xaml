@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:UnifyMESWpf.Views"
+        xmlns:viewmodels="clr-namespace:UnifyMESWpf.ViewModels"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -13,14 +14,16 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="{Binding Title}" Height="450" Width="800">
+        Title="{Binding Title}" Height="600" Width="900" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:LoginViewModel}">
+            <local:LoginView />
+        </DataTemplate>
+        <!-- 추후 DashboardViewModel 추가 예정 -->
+    </Window.Resources>
+    
     <Grid>
-        <materialDesign:Card Padding="32" Margin="16">
-            <StackPanel>
-                <TextBlock Style="{DynamicResource MaterialDesignHeadline4TextBlock}" 
-                           Text="{Binding Title}" />
-                <Button Margin="0 16 0 0" Content="Hello Material Design" />
-            </StackPanel>
-        </materialDesign:Card>
+        <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>
